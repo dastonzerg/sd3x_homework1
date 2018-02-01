@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.lang.Math;
 
 public class Sorting 
 {
@@ -73,6 +74,39 @@ public class Sorting
 	 * Again, you will probably want to use helper functions here
 	 * (ex. partition(), a helper quickselect function)
 	 */
+	private static int partition(CompareInt[] arr)
+	{
+	  int length=arr.length;
+	  int pivotIndex=(int)(Math.random()*length);
+	  CompareInt temp;
+	  
+	  temp=arr[pivotIndex];
+	  arr[pivotIndex]=arr[length-1];
+	  arr[length-1]=temp;
+	  
+	  int i=0, j=length-2;
+	  CompareInt[] tempArr=new CompareInt[length];
+	  for(int k=0; k<=length-2; ++k)
+	  {
+	    if(arr[k].compareTo(temp)<=0)
+	    {
+	      tempArr[i++]=arr[k++];
+	    }
+	    else
+	    {
+	      tempArr[j--]=arr[k++];
+	    }
+	  }
+	  tempArr[i]=temp;
+	  
+	  for(int k=0; k<=length-1; ++k)
+	  {
+	    arr[k]=tempArr[k];
+	  }
+	  
+	  return i;
+	}
+	
 	public static CompareInt quickSelect(int k, CompareInt[] arr) 
 	{
 		return null;
