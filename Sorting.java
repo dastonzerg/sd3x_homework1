@@ -57,7 +57,7 @@ public class Sorting
     int j=0;
     for(int i=low; i<=high; i++)
     {
-      arr[low]=mergedPart[j++];
+      arr[i]=mergedPart[j++];
     }
   }
   
@@ -75,7 +75,6 @@ public class Sorting
 	 */
 	public static CompareInt quickSelect(int k, CompareInt[] arr) 
 	{
-		//TODO
 		return null;
 	}
 
