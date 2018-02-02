@@ -84,17 +84,17 @@ public class Sorting
 	  arr[pivotIndex]=arr[length-1];
 	  arr[length-1]=temp;
 	  
-	  int i=0, j=length-2;
+	  int i=0, j=length-1;
 	  CompareInt[] tempArr=new CompareInt[length];
 	  for(int k=0; k<=length-2; ++k)
 	  {
 	    if(arr[k].compareTo(temp)<=0)
 	    {
-	      tempArr[i++]=arr[k++];
+	      tempArr[i++]=arr[k];
 	    }
 	    else
 	    {
-	      tempArr[j--]=arr[k++];
+	      tempArr[j--]=arr[k];
 	    }
 	  }
 	  tempArr[i]=temp;
@@ -109,7 +109,19 @@ public class Sorting
 	
 	public static CompareInt quickSelect(int k, CompareInt[] arr) 
 	{
-		return null;
+		int pivotIndex=partition(arr);
+		if(pivotIndex==k-1)
+		{
+		  return arr[pivotIndex];
+		}
+		else if(pivotIndex>k-1)
+		{
+		  return quickSelect(k, Arrays.copyOfRange(arr, 0, pivotIndex));
+		}
+		else
+		{
+		  return quickSelect(k-pivotIndex-1, Arrays.copyOfRange(arr, pivotIndex+1, arr.length));
+		}
 	}
 
 }
